@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+    <title></title>
+   <link rel="stylesheet" href="style.css"/>
+    <style>
+        .reveal {
+            display: none;
+        }
+        .red-circle {
+            width: 105px;
+            height: 105px;
+            margin: 77px;
+            border: 2px solid firebrick;
+            border-radius: 50%;
+        }
+    </style>
+ </head>
+ <body>
+  
+     <!--ПРИМЕР 1.  (2).plus(3).minus(1) -->
+     <h2>ПРИМЕР 1.  (2).plus(3).minus(1)</h2>
+
+     <p>Реализовать методы, которые в процессе выполнения строки (2).plus(3).minus(1) дали бы на выходе 4.</p>
+     <p  class="reveal"> Number.prototype.plus = function (value) {
+        return this + value;    }
+        Number.prototype.minus = function (value) {
+            return this - value;
+    }</p>
+     <button class="showAnswer"></button>
+<hr />
+
+     <!--ПРИМЕР 2.     '1*b*1c' -->
+     <h2>ПРИМЕР 2.  '*', '1', 'b', '1c' -> '1*b*1c'</h2>
+     <p>
+         Дана функция, она принимает в качестве аргументов строки '*', '1', 'b', '1c',
+         реализуйте ее так, что бы она вернула строку '1*b*1c'
+     </p>
+     <p class="reveal"> Ее можно решать прямо в лоб, перебирая в цикле все аргументы, но мы поступим умнее.
+
+         function getStr() {
+         return [].slice.call(arguments, 1).join(arguments[0])
+         }
+     </p>
+     <button class="showAnswer"></button>
+<hr />
+      <!--ПРИМЕР 3.     setTimeout внутри цикла--> 
+     <h2> ПРИМЕР 3. setTimeout внутри цикла</h2>
+
+     <p>
+         Что будет выведено в консоль, как можно модифицировать пример что бы он возвращал правильный результат(назовите как можно больше способов)?<br />
+    for (var i = 0; i < 10; i++) <br />
+        setTimeout(function () { <br />
+            console.log(i); <br />
+        }, 100); <br />
+    }
+     </p>
+
+     <p  class="reveal">
+         Самый распространенный, обернуть в замыкание
+
+         for (var i = 0; i < 10; i++) {
+         (function (i) {
+         setTimeout(function () {
+         console.log(i);
+         }, 100);
+         })(i)
+         }
+
+         Не все обращали внимание, что в i можно передать не только контекст
+
+         for (var i = 0; i < 10; i++) {
+         setTimeout(function (i) {
+         console.log(i);
+         }.bind(this, i), 100);
+         }
+
+         Так же методам setInterval и setTimeout можно передать аргументы, которые будут прокинуты в качестве аргументов калбек-функции
+         for (var i = 0; i < 10; i++) {
+         setTimeout(function (i) {
+         console.log(i);
+         }, 100, i);
+         }
+
+         es6
+
+         for (let i = 0; i < 10; i++) {
+         setTimeout(function () {
+         console.log(i);
+         }, 100);
+         }
+
+         Одна из возможностей es6, в данном случае сработает несколько неожиданно, let не в блоке {}.
+     </p>
+     <button class="showAnswer"></button>
+<hr />
+     <!--ПРИМЕР 4.     сорт массива по датам -->
+     <h2>ПРИМЕР 4.  Сортировка  массива по датам</h2>
+     <p>Есть массив в котором лежат объекты с датами, отсортировать по датам.</p>
+
+     <p  class="reveal">var arr = [{date: '10.01.2017'}, {date: '05.11.2016'}, {date: '21.13.2002'}];
+
+arr.forEach(function(item) {
+	var arrDate = item.date.split('.'),
+      date = new Date(Number(arrDate[2]), Number(arrDate[1]), Number(arrDate[0]));
+      item.time = date.getTime();
+});
+
+arr.sort(function (a, b) {
+  if (a.time - b.time < 0) {
+        return false;
+      } else {
+        return true;
+      }
+});
+
+var res = arr.map(function (item) {
+  return {date: item.date};
+});
+
+console.log(res);</p>
+     <button class="showAnswer"></button>
+<hr />
+     <!--ПРИМЕР 5.     Палиндром -->
+     <h2>ПРИМЕР 5. Палиндром </h2>
+     <p>Есть произвольная фраза на русском языке, нужно определить, является ли она палиндромом, например, "А роза упала на лапу Азора".</p>
+
+     <p class="reveal">
+        Решение 1. 
+         function isPalindrom1(str) {
+         if (str.toLowerCase().replace(/[^а-яА-ЯёЁ]/g, '') === str.toLowerCase().replace(/[^а-яА-ЯёЁ]/g,
+         '').split('').reverse().join('')) {
+         return true;
+         } else {
+         return false;
+         }
+         }
+     </p>
+     <button class="showAnswer"></button> (решение 1)
+     <br /><br />
+
+     <p class="reveal">
+         Решение 2.
+         function isPalindrom(str) {
+         var str = str.toLowerCase(),
+         lim = str.length - 1,
+         i = 0,
+         j = str.length - 1;
+
+         while (i <= lim) {
+         if (/[^а-яА-ЯёЁ]/.test(str[i])) {
+         i += 1;
+         }
+         if (/[^а-яА-ЯёЁ]/.test(str[j])) {
+         j -= 1;
+         }
+         if (str[i] != str[j]) {
+         return false;
+         }
+         i += 1;
+         j -= 1;
+         }
+         return true;
+         }
+         console.log(isPalindrom('А роза упала на лапу Азора'));
+     </p>
+     <button class="showAnswer"></button> (решение 2)
+<hr />
+
+     <!--ПРИМЕР 6.     f(2, 3) -> 5   -->
+     <h2>ПРИМЕР 6. f(2, 3) -> 5</h2>
+     <p> Реализовать функцию f: f(2, 3) -> 5, при вызове f(2)(3), тоже вернет 5</p>
+
+     <p class="reveal">
+         function f(a, b) {
+         if (b !== undefined) {
+         return a + b;
+         } else {
+         return function (b) {
+         return a + b;
+         }
+         }
+         }
+     </p>
+     <button class="showAnswer"></button>
+
+     <p> Более сложный вариант.
+         f(0)(3)(1)(5)() -> 8</p>
+
+     <p class="reveal">
+         function f(arg) {
+         var value = arg;
+
+         return function (arg) {
+         if (arg !== undefined) {
+         return f(value + arg);
+         } else {
+         return value;
+         }
+         }
+         }
+     </p>
+     <button class="showAnswer"></button>
+<hr />
+
+     <!--ПРИМЕР 7.  -->
+     <h2>ПРИМЕР 7.  seven(plus(one())) = 8</h2>
+     <p>Реализовать методы seven, plus, one, five, minus, two так чтобы:<br />
+     seven(plus(one())) = 8.  <br />
+     five(minus(two())) = 3</p>
+
+     <p class="reveal">
+         function one(arg) {
+         return 1 + (arg || 0);
+         }
+
+         function two(arg) {
+         return 2 + (arg || 0);
+         }
+
+         function five(arg) {
+         return 5 + (arg || 0);
+         }
+
+         function seven(arg) {
+         return 7 + (arg || 0);
+         }
+
+         function plus(arg) {
+         return arg;
+         }
+
+         function minus(arg) {
+         return -arg;
+         }
+     </p>
+     <button class="showAnswer"></button> (вариант 1. более красивый)
+     <p></p>
+     <p class="reveal">
+         function one_(arg) {
+         if (typeof arg === 'function') {
+         return arg(1);
+         } else {
+         return 1;
+         }
+         }
+
+         function seven_(arg) {
+         if (typeof arg === 'function') {
+         console.log(arg);
+         return arg(7);
+         } else {
+         return 7;
+         }
+         }
+
+         function plus_(arg) {
+         return function (a) {
+         return a + arg;
+         }
+         }
+     </p>
+     <button class="showAnswer"></button> (вариант 2, более сложный, вызывать: seven_(plus_(one_()))  )
+     <hr />
+    
+     <h2>ПРИМЕР 8.    add(num1)(num2)...</h2>
+     <p>
+         Напишите функцию сложения вида add(num1)(num2)..  на ES6
+         Примечание: Количество слагаемых не ограничено
+     </p>
+
+     <p class="reveal">
+         const add = (a) => {
+         let sum = a;
+         const func = (b) => {
+         if (b) {
+         sum += b;
+         return func;
+         } else {
+         return sum;
+         }
+         };
+         return func;
+         };
+         add(2)(3)(); // 5;
+     </p>
+     <button class="showAnswer"></button> 
+     <p></p>
+     <p></p>
+     <p>
+         (*) Дополнительное условие: Убрать в конце лишние скобки (хахаха) и вывести результат в консоль
+     </p>
+
+     <p class="reveal">
+         const addHard = (a) => {
+         let sum = a;
+         const func = (b) => {
+         sum += b;
+         return func;
+         };
+         func.valueOf = () => sum;
+         return func;
+         };
+         console.log(addHard(2)(3)); // 5;<br /><br />
+         Когда мы вызываем console.log , он ожидает увидеть String, если его там нет, то он попытается сделать из полученного значения String.<br />
+         В примере выше после выполнения add(2)(3) возвращается function, которую console.log будет превращать в String, в ходе этих действий будет вызван метод valueOf для преобразования function к примитиву, а так мы переопределили данный метод, то он вернёт наше значение sum вместо стандартного.
+
+         (Данный пример не работает со всеми console.)
+     </p>
+     <button class="showAnswer"></button> (*)
+     <hr />
+     
+     <script src="JS puzzles and tasks.js"></script>
+
+ </body>
+ </html>

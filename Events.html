@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" name='viewport' >
+    <title>Webref Мержевич</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <style>
+      [class*="col-"] {
+          border: 2px solid indigo;
+          margin-top: 3%;
+          padding: 15px;
+      }     
+
+      [class*="done"] {
+          background-color: rosybrown;
+      }
+
+      #searchForm {
+          border: 2px dashed brown;
+          width: 416px;
+      }
+
+      #searchDiv {
+          border: 2px dotted lime;
+          width: 279px;
+      }
+
+      [type="submit"] {
+          width: 174px;
+          display: block;
+      }
+
+      #field {
+          width: 200px;
+          height: 150px;
+          border: 10px groove black;
+          background-color: #00FF00;
+          position: relative;
+          overflow: hidden;
+          cursor: pointer;
+      }
+
+      #ball {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 20px;
+          height: 20px;
+          transition: all 0.8s;
+      }
+  
+  </style>
+ </head>
+
+<body>
+
+    <div class='container'>
+        <div class='row'>
+            <div class='col-xs-3'>
+                <!--Field with ball-->
+                Кликните на любое место поля, чтобы мяч перелетел туда.
+                <br>
+
+                <div id="field">
+                    <img id="ball" src="https://js.cx/clipart/ball.svg"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+                    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+                </div>
+            </div>
+
+            <div class='col-xs-1'>
+                <!--Checkbox-->
+                <form>
+                    <label for="id-checkbox">Checkbox:</label>
+                    <input type="checkbox" id="checkbox1" />
+                </form>
+                <div id="output-box" style="font-size: 1.6rem"></div>
+            </div>
+
+            <div class='col-xs-8'>
+                <form id="searchForm" name="search" action="#" method="get" class="form-inline form-search">
+                    <p style="color: brown">searchForm</p>
+                    <div id="searchDiv" class="input-group">
+                        <label for="searchInput" style="color: lime">searchDiv</label>
+                        <button id="go" type="submit" class="btn btn-primary">Left click -, right +</button>
+                        <button type="submit" class="btn btn-primary">Left click -, right +</button>
+                        <button type="button" class="btn btn-primary">Not submit</button>
+                        <button type="submit" class="btn btn-primary">Left click -, right +</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="Events.js"></script>
+</body>
+</html>
+

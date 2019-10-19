@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+  <button onclick="run()">Загрузить!</button>
+    <ul id="result"></ul>
+
+  <script>
+      function run() {
+          var xhr = new XMLHttpRequest();
+          write(xhr.readyState);
+
+          xhr.open('GET', 'digits', true);
+          xhr.setRequestHeader('Akuna', 'Matata');
+          write(xhr.readyState);
+      
+
+          xhr.onreadystatechange = function () {
+              var headers = xhr.getResponseHeader('Connection') + '  Date  ' + xhr.getResponseHeader('Date')
+              write(xhr.readyState + ' получено символов: ' + xhr.responseText.length + '\n HEADERS  ' + headers);
+      }
+
+      xhr.send();
+      
+    }
+
+      function write(text) {
+          var li = result.appendChild(document.createElement('li'));
+          li.innerHTML = text;
+      }
+     
+  </script>
+
+</body>
+
+</html>

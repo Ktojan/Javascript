@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+    <title>JSONP, XHR</title>
+   <link rel="stylesheet" href="AsyncJS_XHR.css"/> 
+ </head>
+ <body>
+
+     <script>
+         function ok(data) {
+             console.dir(data);
+             document.getElementsByClassName('ratherBig')[0].innerHTML = data.name + ' from ' + data.city;
+         }
+
+         function fail(url) {
+             console.dir('Ошибка при запросе на ' + url);
+         }
+
+         function go() {
+             scriptRequest("https://www.w3schools.com/js/demo_jsonp2.php", ok, fail);
+         } // grabbed from https://www.w3schools.com/js/js_json_jsonp.asp 
+
+     </script>
+
+     <div class="grid-container centered">
+         <div class="grid-100">
+             <div class="contained">
+                 <div class="grid-100">
+                     <div class="heading">
+                         <h1>Corporate Intranet</h1>
+                     </div>
+                 </div>
+                 <section class="grid-70 main">
+                     <h2>Lorem Ipsum Headline</h2>
+                     <details>
+                         <summary><button onclick='sendPromise2()'>sendPromise2 однако</button></summary>
+                         <p id="sendPromise2">Здесь может быть ваш результат вызова функции</p>
+                     </details>
+
+                     <p></p>
+                     <button onclick='go()'>Сделать запрос</button>
+                     <p></p>
+
+                     <details>
+                         <summary>ПОСЛЕДОВАТЕЛЬНОСТЬ СОБЫТИЙ</summary>
+                         <textarea rows="8" cols="40" id="area">Кликни меня</textarea>
+                         <script>
+                             area.onmousedown = function (e) { this.value += "mousedown\n"; this.scrollTop = this.scrollHeight; };
+                             area.onmouseup = function (e) { this.value += "mouseup\n"; this.scrollTop = this.scrollHeight; };
+                             area.onclick = function (e) { this.value += "click\n"; };
+                         </script>
+                         <input type="button" id="button" value="Нажми меня">
+                         <input type="text" id="text" size="10">
+                         <p class="ratherBig" id="ratherBig"></p>
+                         <div id="placeForImg"></div>
+                     </details> 
+                     
+                     <p><mark id="prom1">Doubleclick --> PROMISE 1</mark></p>
+
+                 </section>
+
+                 <aside class="grid-30 list">
+                     <h2>Employee Office Status</h2>
+                     <div id="employeeList">
+
+                     </div>
+                 </aside>
+                 <footer class="grid-100">
+                     <p>Copyright, The Intranet Corporation</p>
+                 </footer>
+             </div>
+         </div>
+     </div>
+
+     <script>
+                             button.onclick = function () {
+                                 text.value += ' ->в onclick ';
+
+                                 setTimeout(() => text.focus(), 0);
+
+                                 text.value += ' из onclick-> ';
+                             };
+                             text.onfocus = function () {
+                                 text.value += ' !focus! ';
+                             };
+     </script>
+
+
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="AsyncJS_XHR.js"></script>
+
+</body>
+ </html>

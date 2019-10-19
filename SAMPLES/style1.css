@@ -1,0 +1,40 @@
+h3 {
+  padding-left: 20px;
+}
+
+.column-left {
+  float: inherit;
+  width: 30%;
+  background-color: lightblue;
+}
+
+.column-right {
+  float: inherit;
+  width: 60%;
+}
+
+.footer {
+  clear: both;
+  background-color: yellow;
+}
+
+.left-picture {
+  float: left;
+  margin: 0 20px 5px 10px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 0.7rem;
+}
+
+.right-picture {
+  float: right;
+  margin: 15px 20px 0 10px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 0.7rem;
+}
+
+.hero {
+  float: left;
+  background: #D2B48C;
+ }

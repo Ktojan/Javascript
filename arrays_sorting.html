@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10, user-scalable=yes">
+    <title></title>
+   <link rel="stylesheet" href="style.css"/>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" />
+    <style>
+        #arrTwo,
+        .buttons button {
+            display: none;
+        }
+
+        .arrayMod {
+            background: linear-gradient(teal, indigo);
+            color: cornsilk;
+            padding: 7px;
+            font-size: 1.2rem;
+        }
+    </style>
+ </head>
+<body style="padding: 2%">
+    <button id="arrOne">Create 'arrOne' (with both + and - numbers, and 0)</button>
+    <button id="arrTwo">Create 'arrTwo' (the same)</button>
+    <hr>
+    <section class="buttons">
+        <button class="arrayMod" id="sorterDefault">Sorter JS default </button>
+        <button class="arrayMod" id="sorterSimple">Sorter simple for numbers </button>
+        <button class="arrayMod" id="oddsSum">Summ of all odds (including negatives)</button>
+        <button class="arrayMod" id="insideRange">Get numbers inside range (diapasone) </button>
+    </section> 
+    <hr />
+        <p>Из массива вида [1, [1, 2, [3, 4]], [2, 4]]  нужно получить плоский массив  [1, 1, 2, 3, 4, 2, 4]<br />
+        function MarryArrays() {<br />
+        let mas = <B>[1, [true, 'second', [3, NaN]], ['array', [], -5]],</B><br />
+        resMas = [];<br />
+    removeMas(mas);<br />
+    function removeMas(mas) {<br />
+        mas.reduce(function (res, cur) {<br />
+            (cur.__proto__.constructor.name !== "Array") ?<br />
+                resMas.push(cur)<br />
+                : removeMas(cur);<br />
+        }, null);<br />
+    }<br />
+    return resMas;<br />
+}</p>
+      <button id="MarryArrays">Make arrays flat</button>
+<hr />
+   
+
+<script src="arrays_sorting.js"></script>
+
+</body>
+ </html>

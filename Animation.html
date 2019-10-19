@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" name='viewport' >
+    <title>Webref Мержевич</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <style>
+   [class*="col-"] {
+     background-color: #fff;
+    border-right: 2px solid #f05;
+    border-left: 2px solid #f05;
+    margin-top: 3px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+   
+   }
+  [class*='pull-left'] {
+  float: left !important;
+	}
+   [class*="done"] {
+       background-color: rosybrown;
+   }
+  
+  </style>
+ </head>
+
+<body>
+
+ <div class='container'>
+  <div class='row'>
+ 	<div class='col-xs-12'>
+
+ 	<form id="searchForm" name="search" action="#" method="get" class="form-inline form-search">
+        <div id="searchDiv" class="input-group">
+					<label class="sr-only" for="searchInput">Search</label>
+					<input class="form-control" id="searchInput" type="text" name="search" width="1">
+					<div  class="input-group-btn">
+						<button type="submit" class="btn btn-primary" id="go">GO</button>
+					</div>
+				</div>
+			</form>
+
+    </div>
+  </div>
+ </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="Animation.js"></script>
+ </body>
+</html>
+

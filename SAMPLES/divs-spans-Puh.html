@@ -1,0 +1,157 @@
+<html>
+
+<head>
+<title>Fonts</title>
+ <link rel="stylesheets" type='text/css' href="style1.css" />
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script> 
+</head>
+
+<body>
+
+<style>
+  html {
+    font-size: 18px;
+  }
+  
+  img {
+    height: 20vmin;
+  }
+
+  h3 {
+  padding-left: 20px;
+}
+
+.column-left {
+  float: left;
+  width: 30%;
+  background-color: lightblue;
+}
+
+.column-right {
+  float: right;
+  width: 60%;
+}
+
+.footer {
+  clear: both;
+  background-color: yellow;
+}
+
+.left-picture {
+  float: left;
+  margin: 0 20px 5px 10px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 0.7rem;
+}
+
+    figure  {
+        float: left;
+        margin: 0 20px 5px 10px;
+        text-align: center;
+        border: 3px solid black;
+        font-size: 0.8rem;
+    }
+
+.right-picture {
+  float: right;
+  margin: 15px 20px 0 10px;
+  text-align: center;
+  border: 1px solid black;
+  font-size: 0.7rem;
+}
+
+.hero {
+  float: left;
+  background: #D2B48C;
+ }
+
+ #first > li {
+  display: inline-block;
+  list-style: none;
+  border: 3px solid red;
+  vertical-align: bottom;
+  margin: 0.5vw;
+  padding: 5px;
+}
+</style>
+
+
+<span style="border:3px solid black" style="width:600px">
+  <span style="border:1px solid blue; width:90%; ">Ширина</span>     
+  <div style="border:1px solid green; display: inline; padding: 0px">Div</div><a style="border:1px solid red; ">Игнорируется</a>
+</span>
+
+<br>
+
+<ul id='first' style="border:1px solid black; padding:0">
+  <li>Инлайн Блок<br>3 строки<br>высота/ширина явно не заданы, даже близко никак не заданы</li>
+  <li style="width:100px;height:100px">Инлайн<br>Блок 100x100</li>
+  <li style="width:6px;height:6px">6x6</li>
+  <li style="width:100px;height:60px">Инлайн<br>Блок 100x60</li>
+  <li style="width:60px;height:100px">Инлайн<br>Блок 60x100</li>
+</ul>
+
+
+<form style= 'display: table' >
+  <div style= "display: table-row">
+    <label style= "display: table-cell">Имя:   </label>
+    <input  style= "display: table-cell" placeholder="Your name, blya">
+  </div style= "display: table-row">
+    <label style= "display: table-cell">Фамилия:   </label>
+      <input style= "display: table-cell" placeholder="Sirname, na">
+  <div>
+  </div>
+</form>
+
+<br>
+<div style="float: right">
+
+<div style="background-color: yellow">Шапка типа</div>
+
+<div class="column-left">
+<h3>Персонажи</h3>
+<ul>
+  <li>Винни-Пух</li>
+  <li>Ослик Иа</li>
+  <li>Сова</li>
+  <li>Кролик</li>
+</ul>
+  
+</div>
+
+<div class="column-right">
+  <div class='hero'>
+  <h3 style='display: list-item; list-style: inside square'>Винни-Пух</h3>
+
+  <div class="left-picture">
+    <img src="imgs/winnie-mult.jpg" alt ="Винни-пушище" width="200" height="150">
+    <div>Кадр из советского<br> мультфильма</div>
+    <div  style="clear: both"></div>
+  </div>
+
+      <figure>
+          <img src="imgs/winnie-mult.jpg" alt="Винни-пушище" width="200" height="150">
+          <figcaption>Кадр из советского<br> мультфильма</figcaption>
+      </figure>
+
+  <p>Ви́нни-Пу́х (англ. Winnie-the-Pooh) — плюшевый мишка, персонаж повестей и стихов Алана Александра Милна (цикл не имеет общего названия и обычно тоже называется «Винни-Пух», по первой книге). Один из самых известных героев детской литературы XX века.</p>
+
+  <p> В 1960-е—1970-е годы, благодаря пересказу Бориса Заходера «Винни-Пух и все-все-все», а затем и фильмам студии «Союзмультфильм», где мишку озвучивал Евгений Леонов, Винни-Пух стал очень популярен и в Советском Союзе.</p>
+  </div>
+
+</div>
+
+<div class='footer'>Подвал</div>
+
+</div>
+
+
+</body>
+    
+</html>  
+    
+    
+
+
