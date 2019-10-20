@@ -82,10 +82,9 @@
 
     });
 }
-
-
-
 // END OF *** 1
+
+
 
 var simplePro = new Promise(function (resolve, reject) {
     setTimeout(function () {
@@ -140,13 +139,13 @@ simpleProFuck.then(first).then(second);*/
 
 
 
-    //function sendPromise2() {
-    //    httpGet("https://learn.javascript.ru/article/promise/user.json")
-    //        .then(
-    //        response => $('#sendPromise2').text(`Fulfilled: ${response}`),
-    //        error    => $('#sendPromise2').text(`Rejected: ${error}`)
-    //        );
-    //}
+    function sendPromise2() {
+       httpGet("https://learn.javascript.ru/article/promise/user.json")
+           .then(
+           response => $('#sendPromise2').text(`Fulfilled: ${response}`),
+           error    => $('#sendPromise2').text(`Rejected: ${error}`)
+           );
+    }
 
     //   END OF ***** PROMISES ******
 
@@ -248,28 +247,60 @@ async function f1() {
 //f1();
 
 
-//let hello = async function () { return "Hello expr" }; ==
-//var hello = async () => { ==
-async function hello () {
-    return greeting = await Promise.resolve("Hello from hell!");
-};
-
-//hello().then((val) => console.dir(val)); ==   // NOTABENE
-//hello().then(alert);  
 
 
 // ************************** Rewriting promise code with async/await ***********************
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await 
 
-fetch('nice_girl.jpg')
-    .then(response => response.blob())
-    .then(myBlob => {
-        let objectURL = URL.createObjectURL(myBlob);
+// fetch('nice_girl.jpg')
+//     .then(response => response.blob())
+//     .then(myBlob => {
+//         let objectURL = URL.createObjectURL(myBlob);
+//         let image = document.createElement('img');
+//         image.src = objectURL;
+//         document.body.appendChild(image);
+//     })
+//     .catch(e => {
+//         console.log('There has been a problem with your fetch operation: ' + e.message);
+//     });
+
+  
+    document.getElementById('showCoffeeCup').addEventListener('click',
+     () => showCoffee('../assets/coffee.jpg', 'blob', displayImage));
+
+    function showCoffee(url, type, callback) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.responseType = type;
+        xhr.open('GET', url);
+        xhr.onload = function() { callback(xhr.response)};
+        xhr.send();
+    }
+    
+    function displayImage(blob) {
+        let objectURL = URL.createObjectURL(blob);      
         let image = document.createElement('img');
         image.src = objectURL;
         document.body.appendChild(image);
-    })
-    .catch(e => {
-        console.log('There has been a problem with your fetch operation: ' + e.message);
-    });
+    }
 
+
+    function loadLodash (src, callback) {
+        let lod = document.createElement('script');
+        lod.src = src;
+        lod.type= "text/javascript";
+        lod.onload = () => callback(null, lod);
+        lod.onerror = () => callback(new Error('failed load Lodash'))
+
+        document.head.appendChild(lod);
+    }
+
+    loadLodash('https://cdnjs.cloudflare.com/ajax/libs/lodash.##js/3.2.0/lodash.js', function(error, script) {
+        if (error) {
+            console.error(error);
+        }
+        else console.log(`${script.src} успешно загружен!`);
+    })
+
+
+    

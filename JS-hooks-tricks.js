@@ -1,4 +1,9 @@
-﻿
+﻿"use strict"
+const log = console.log;
+const table = console.table;
+
+///////////////////////////////////
+
 function hollyShitBegins(e) {
     document.body.removeChild(e.target);
     const content = document.body.innerHTML;
@@ -13,7 +18,7 @@ function hollyShitBegins(e) {
     console.log(phrase.style.fontSize);
     var tick = window.setInterval(function () {
         phrase.style.fontSize = 10 + n + 'px';
-        phrase.innerText = "MATRIX HAS YOU...".repeat(Math.pow(2,n));
+        phrase.innerText = "MATRIX HAS YOU... ".repeat(Math.pow(2,n));
         n++;
     }, 900);
     document.body.addEventListener( 'keyup', () => {
@@ -119,13 +124,83 @@ function hollyShitBegins(e) {
     var mx = Math.max.apply(null, numbers);
 }
 
+///////////////////////// BIND
 
+// let user = {
+//     firstName: "Вася",
+//     say(phrase) {
+//       alert(`${phrase}, ${this.firstName}!`);
+//     },
+//     kill(weapon) {
+//         confirm(`Let's finish ${this.firstName} using a ${weapon}!`)
+//     }
+//   };
+
+// const killBill = user.kill.bind(user);
+// //killBill('spear');
+
+// // привязка всех методов объекта
+// for (var p in user) {
+//     if (typeof user[p] == 'function') user[p] = user[p].bind(user)
+// }
+// user.kill('bomb')
+
+
+//////////////////////////////
+
+function divide(x,y) { return y/x};
+
+const getHalf = divide.bind(null, 2);
+
+
+
+function makeArr() {
+    return Array.prototype.slice.call(arguments);
+}
+let superMake = makeArr.bind(null, `Array from arguments:`);
+
+
+
+// function askPassword(login) {
+//     const name = 'wrong context name';
+//     let password = prompt("Password?", '');
+//     if (password == "rock") login(true);
+//     else login(false);
+//   }
+  
+//   let user = {
+//     name: 'Matthew',
+  
+//     login(result) {
+//         alert( this.name + (result ? ' logged in' : ' failed to log in') );
+//       }
+//   };
+//   askPassword(user.login.bind(user));
+
+//////////// #2
+
+  function askPassword(ok, fail) {
+    const name = 'wrong context name';
+    let password = prompt("Password?", '');
+    if (password == "rock") ok();
+    else fail();
+  }
+  
+  let user = {
+    name: 'Matthew',
+  
+    login(result) {
+        log( (this.name + (result ? ' logged in' : ' failed to log in')).toUpperCase() );
+    }
+  };
+  //askPassword(user.login.bind(user, true), user.login.bind(user, false));
+  askPassword(() => user.login(true), () => user.login(false));
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////     СТРОКИ. МЕТОДЫ РАБОТЫ СО СТРОКАМИ
 
-//^^^^^  replace + regexp для перестановки слов  TOLOOK
+//^^^^^  replace + regexp для перестановки слов  TOLOOK regexp
 
 var re = /([А-ЯЁа-яё]+)\s([А-ЯЁа-яё]+)\s([А-ЯЁа-яё]+)/;
 var str = 'Джон Семенович Смит';
@@ -136,7 +211,7 @@ var newstr = str.replace(re, '$3, $1 $2');
 
 //^^^^^^^^ indexOf
 function findAllOccurs() {
-    let str = 'Ослик иа-иа посмотрел на виадук и асказал - иа!', indexes='';
+    let str = 'Ослик Иа-иа посмотрел на виадук и а промолвил: ИА!';
     console.table(str.split(''));
     let target = 'иа'; // цель поиска
     //let pos = 0;
@@ -149,10 +224,15 @@ function findAllOccurs() {
 
 // более краткая запись
     let pos = -1;
-    while ((pos = str.indexOf(target, pos + 1)) != -1) {
+    while ((pos = str.toLowerCase().indexOf(target, pos + 1)) != -1) {
         console.log(`found at ${pos}`);
     }
 }
+
+
+
+
+
 
 //^^^^^^^^^^  chars codes Unicode
 
