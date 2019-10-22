@@ -194,7 +194,7 @@ let superMake = makeArr.bind(null, `Array from arguments:`);
     }
   };
   //askPassword(user.login.bind(user, true), user.login.bind(user, false));
-  askPassword(() => user.login(true), () => user.login(false));
+  //askPassword(() => user.login(true), () => user.login(false));
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
